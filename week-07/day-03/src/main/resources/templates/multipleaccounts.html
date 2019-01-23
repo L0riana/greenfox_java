@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bank of Simba #</title>
+    <link rel="stylesheet" th:href="@{/layout.css}"/>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<h1>Bank of Simba</h1>
+<table class="table" border = "1">
+    <tr>
+        <th>Index</th>
+        <th>Name</th>
+        <th>Balance</th>
+        <th>AnimalType</th>
+        <th>isKing</th>
+        <th>isGood</th>
+    </tr>
+    <tr th:each="bankAccount : ${accounts}">
+        <td th:text="${bankAccountStat.index+1}"></td>
+        <td th:text="${bankAccount.getName()}"/></td>
+        <td th:text="${bankAccount.getBalance()}"/></td>
+        <td th:text="${bankAccount.getAnimalType()}"/></td>
+        <td th:class="${bankAccount.isKing()} ? king : notking" th:text="${bankAccount.isKing()}"></td>
+        <td th:text="((${bankAccount.isGood()}) ? ('Good guy') : ('Bad guy'))"></td>
+        <!--<td th:class="${bankAccount.isGood()} ? ('Good guy') : ('Bad guy') "th:text="${bankAccount.isGood()}">-->
+        <!--<td><th:block th:switch="${bankAccount.isGood()}">-->
+          <!--<div th:case="true">Good guy</div>-->
+          <!--<div th:case="false">Bad guy</div>-->
+        <!--</th:block></td>-->
+    </tr>
+</table>
+
+<form action="#" th:action="@{/showaccounts}" method="post">
+    <p>Choose an animal to raise the selected account!</p>
+    <label>
+        <select>
+            <option th:each="bankAccount : ${accounts}"
+                    th:value="${bankAccount.getName()}"
+                    th:text="${bankAccount.getName()}"></option>
+        </select>
+    </label>
+    <input name="submit" type="submit" value="Raise" />
+</form>
+</body>
+</html>

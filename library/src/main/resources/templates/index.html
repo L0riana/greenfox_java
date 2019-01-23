@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Library App</title>
+</head>
+<body>
+<h1 class="text-center" th:text="'Welcome to the library'"/></h1>
+<h3 class="text-center">
+    <a class="label label-success" th:href="@{/books/add}">Add book</a>
+    <a class="label label-success" th:href="@{/users/add}">Add user</a>
+</h3>
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>TITLE</th>
+        <th>AUTHOR</th>
+        <th>ISBN</th>
+        <th>Borrowed by</th>
+        <th>Borrower ID</th>
+        <th>Add borrower</th>
+    </tr>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.ISBN}"></td>
+        <th:block th:if="${book.borrowedBy}!=null">
+            <td th:text="${book.borrowedBy.name}"></td>
+            <td th:text="${book.borrowedBy.id}"></td>
+        </th:block>
+        <td>
+            <form action="#" th:action="@{/(id=${book.id})}" method="post" th:object="${user}">
+                <select>
+                    <option th:each="user : ${users}"
+                            th:value="${user.name}"
+                            th:text="${user.name}"></option>
+                    <div class="form-button">
+                        <input type="submit" value="Add"/>
+                    </div>
+                    </option>
+                </select>
+            </form>
+        </td>
+    </tr>
+</table>
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+    </tr>
+</table>
+<script src="webjars/jquery/1.11.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+</body>
+</html>

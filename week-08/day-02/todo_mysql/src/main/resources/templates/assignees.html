@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>TODO CRUD App</title>
+</head>
+<body>
+<h1 th:text="'TODOS FOR TODAY'"/></h1>
+<h1 th:text="'Assignees'"></h1>
+<h3>
+    <a class="label label-success" th:href="@{/todo/assignees/add}">Add new assignee</a>
+</h3>
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>EMAIL</th>
+        <th>DELETE</th>
+        <th>UPDATE</th>
+    </tr>
+    <tr th:each="assignee : ${assignees}">
+        <td th:text="${assignee.assigneeId}"></td>
+        <td th:text="${assignee.name}"></td>
+        <td th:text="${assignee.email}"></td>
+        <td>
+            <a class="label label-danger" th:href="@{/todo/assignees/{id}/delete(id=${assignee.assigneeId})}">delete</a>
+        </td>
+        <td>
+            <a class="label label-primary " th:href="@{/todo/assignees/{id}/edit(id=${assignee.assigneeId})}">update</a>
+        </td>
+    </tr>
+</table>
+<p>
+    <a th:href="@{/todo/}">Back to todolist</a>
+</p>
+<script src="webjars/jquery/1.11.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+</body>
+</html>

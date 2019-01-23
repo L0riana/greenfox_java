@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>TODO CRUD App</title>
+</head>
+<body>
+<h1 class="text-center" th:text="'TODOS FOR TODAY'"/></h1>
+<h3 class="text-center">
+    <a class="label label-success" th:href="@{/todo/add}">Add new todo</a>
+    <a class="label label-info" th:href="@{/todo/assignees}">List of assignees</a>
+</h3>
+<form action="#" th:action="@{/todo/search}" method="get">
+    <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="text">
+    <button class="btn" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
+</form>
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>ACTION</th>
+        <th>URGENT</th>
+        <th>DONE</th>
+        <th>DELETE</th>
+        <th>UPDATE</th>
+        <th>ASSIGNEE</th>
+    </tr>
+    <tr th:each="todo : ${todos}">
+        <td th:text="${todo.getId()}"></td>
+        <td th:text="${todo.getTitle()}"></td>
+        <td th:text="${todo.isUrgent()}"></td>
+        <td th:text="${todo.isDone()}"></td>
+        <td>
+            <a class="label label-danger" th:href="@{/todo/{id}/delete(id=${todo.id})}">delete</a>
+        </td>
+        <td>
+            <a class="label label-primary " th:href="@{/todo/{id}/edit(id=${todo.id})}">update</a>
+        </td>
+     <!--   <td th:text="${todo.assignee.name}"></td>-->
+    </tr>
+</table>
+<script src="webjars/jquery/1.11.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+</body>
+</html>

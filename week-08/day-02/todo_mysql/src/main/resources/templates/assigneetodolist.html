@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>TODO CRUD App</title>
+</head>
+<body>
+<h3 class="text-center">
+    <a class="label label-success" th:href="@{/todo/add}">Add new todo</a>
+    <a class="label label-info" th:href="@{/todo/assignees}">List of assignees</a>
+</h3>
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>ACTION</th>
+        <th>URGENT</th>
+        <th>DONE</th>
+        <th>DELETE</th>
+        <th>UPDATE</th>
+        <th>ASSIGNEE</th>
+    </tr>
+    <tr th:each="todo : ${assignee.todoList}">
+        <td th:text="${todo.id}"></td>
+        <td th:text="${todo.title}"></td>
+        <td th:text="${todo.urgent}"></td>
+        <td th:text="${todo.done}"></td>
+        <td><a th:href="@{'/' + ${todo.id} + '/delete'}">delete</a></td>
+        <td><a th:href="@{'/' + ${todo.id} + '/edit'}">edit</a></td>
+    </tr>
+</table>
+<script src="webjars/jquery/1.11.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+</body>
+</html>

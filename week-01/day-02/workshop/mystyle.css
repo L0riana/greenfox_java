@@ -1,0 +1,73 @@
+body {
+    color: black;
+}
+
+h1 {
+    font-size: 42px;
+}
+
+h2 {
+    color:#ff0099;
+}
+
+img {
+    float: left;
+    vertical-align: middle;
+}
+.navigation {
+    overflow: hidden;
+    position: fixed;
+    width: 1050px;
+    background-color: #333333;
+    padding: 5px 10%;
+    vertical-align: middle;
+}
+
+ul {
+    float: right;
+    list-style-type: none;
+    margin: 1px 0;
+}
+
+li {
+    float: left;
+    text-align: right;
+}
+
+li a {
+    font-size: 14px;
+    display: block;
+    padding-right: 20px;
+    padding-top: 8px;
+    color:#ff0099;
+    float: right;
+}
+
+article {
+    width: 1050px;
+    margin: 0;
+    padding: 10%;
+}
+
+.threedots {
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 15px;
+}
+
+#wiki {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#instruction-set {
+    text-align: justify;
+    font-size: 20px;
+    font-weight: bold;
+}
+#explanation {
+    text-align: justify;
+    font-size: 14px;
+    font-weight: normal;
+}

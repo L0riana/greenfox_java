@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Library App</title>
+</head>
+<body>
+<h1 class="text-center" th:text="'Welcome to the library'"/></h1>
+<form action="#" th:action="@{/books/add}" method="post" th:object="${newBook}">
+    <h3 class="text-center" th:text="'Add book'"></h3>
+    <label>Book title:</label>
+    <input type="text" name="title" th:field="${newBook.title}" />
+    <label>Author:</label>
+    <input type="text" name="author" th:field="${newBook.author}" />
+    <label>ISBN:</label>
+    <input type="text" name="ISBN" th:field="${newBook.ISBN}"/>
+    <div class="container" >
+        <input type="submit" class="btn btn-primary" value="SUBMIT">
+    </div>
+</form>
+<p>
+    <a th:href="@{/}">Back to Main page</a>
+</p>
+<script src="webjars/jquery/1.11.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+</body>
+</html>

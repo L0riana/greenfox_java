@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/stylesheet.css}"/>
+    <title>Space Transporter</title>
+</head>
+<body>
+<h1 th:text="'Space Transporter'"></h1>
+<table style="width:35%">
+    <tr>
+        <th>Planet</th>
+        <th>Population</th>
+        <th>Spaceship location</th>
+        <th>People on ship</th>
+    </tr>
+    <tr th:each="planet : ${planets}">
+        <td th:text="${planet.name}"></td>
+        <td th:text="${planet.population}"></td>
+        <td>
+                <span th:if="${planet.name} != ${spaceship.planet}">
+                    <form action="#" th:action="@{'/movehere/' + ${planet.id}}" method="post">
+                        <input role="button" type="submit" value="Move here"/>
+                    </form>
+                </span>
+            <span th:unless="${planet.name} != ${spaceship.planet}">
+                    <a th:href="@{'/toplanet/' + ${planet.id}}">&larr; to planet</a>
+                    <a th:href="@{'/toship/' + ${planet.id}}">to ship &rarr;</a>
+                </span>
+        </td>
+        <td>
+            <span th:if="${planet.name} == ${spaceship.planet}" th:text="${spaceship.getUtilization()}"></span>
+            <span th:unless="${planet.name} == ${spaceship.planet}" th:text="'-'"></span>
+        </td>
+    </tr>
+</table>
+<p>Please consider that the max capacity of the spaceship is 60 people.</p>
+</body>
+</html>
+</body>
+</html>

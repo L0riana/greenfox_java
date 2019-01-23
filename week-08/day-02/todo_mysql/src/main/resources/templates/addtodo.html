@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Create new todo</title>
+</head>
+<body>
+<form action="#" th:action="@{/todo/add}" method="post">
+    <label for="name" >New todo:</label>
+    <input type="text" id="name" name="title" />
+    <div class="container" >
+    <input type="submit" class="btn btn-primary" value="SUBMIT">
+    </div>
+</form>
+<p>
+    <a th:href="@{/todo/}">Back to todolist</a>
+</p>
+<script src="webjars/jquery/1.11.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+</body>
+</html>
